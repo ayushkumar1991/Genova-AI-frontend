@@ -1,17 +1,14 @@
-// src/app/verification/page.js
-
 "use client";
-
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 export default function Verification() {
-  const [num1, setNum1] = useState(0);
-  const [num2, setNum2] = useState(0);
-  const [userAnswer, setUserAnswer] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
-  const [attempts, setAttempts] = useState(0);
+  const [num1, setNum1] = useState<number>(0);
+  const [num2, setNum2] = useState<number>(0);
+  const [userAnswer, setUserAnswer] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
+  const [attempts, setAttempts] = useState<number>(0);
 
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -28,10 +25,7 @@ export default function Verification() {
     generateProblem();
   }, []);
 
-  /**
-   * @param {React.FormEvent<HTMLFormElement>} e
-   */
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
     setError("");
@@ -119,7 +113,9 @@ export default function Verification() {
               type="number"
               id="answer"
               value={userAnswer}
-              onChange={(e) => setUserAnswer(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setUserAnswer(e.target.value)
+              }
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-center text-xl font-mono"
               placeholder="Enter answer"
               required
@@ -203,3 +199,4 @@ export default function Verification() {
     </div>
   );
 }
+
