@@ -36,7 +36,7 @@ export default function Verification() {
 
     if (parseInt(userAnswer) === correctAnswer) {
       // get redirect path (default = /dashboard)
-      const redirect = searchParams.get("redirect") || "/dashboard";
+      const redirect = searchParams.get("redirect") ?? "/dashboard";
       router.push(redirect);
     } else {
       setAttempts((prev) => prev + 1);
