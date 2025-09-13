@@ -1,5 +1,7 @@
 // src/app/verification/page.js
+
 "use client";
+
 import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
@@ -26,6 +28,9 @@ export default function Verification() {
     generateProblem();
   }, []);
 
+  /**
+   * @param {React.FormEvent<HTMLFormElement>} e
+   */
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
